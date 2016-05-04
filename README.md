@@ -34,6 +34,8 @@ At this point we can send request to the person service
 
     $ ./person/person jomoespe
 
+>  Note: At this moment the ''person'' service is a dummy which only manages the person ids: *illescas*, *juergas*, *jbbarquero*, *dparra* and *jomoespe*, and only return the person name.
+
 
 ### Stop the system
 
