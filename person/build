@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w -X 'main.version=$(cat VERSION)' -X 'main.build=$(git rev-parse --short HEAD)' -X 'main.buildDate=$(date --rfc-3339=seconds)'" -a -installsuffix cgo -o person person.go
+
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled."
+  #docker build -t ondaway/person:$(cat VERSION) .
+  #rm persond
+fi

@@ -1,0 +1,17 @@
+version: '2'
+services:
+  commandbus:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
+    networks:
+      - services
+  eventbus:
+    image: rabbitmq
+    ports:
+      - "5673:5672"
+    networks:
+      - services
+networks:
+  services:   
+    driver: bridge

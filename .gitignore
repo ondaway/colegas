@@ -1,0 +1,7 @@
+# The binaries
+persond/persond
+person/person
+
+# The execution log files
+*.log
+

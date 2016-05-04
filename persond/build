@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+go fmt persond.go
+if [ $? -ne 0 ]
+then
+  echo "! Error formating source code"
+  exit 1
+fi
+
+CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w -X 'main.version=$(cat VERSION)' -X 'main.build=$(git rev-parse --short HEAD)' -X 'main.buildDate=$(date --rfc-3339=seconds)'" -a -installsuffix cgo -o persond persond.go
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled. Creating Docker container"
+  docker build -t ondaway/persond:$(cat VERSION) .
+  #rm persond
+else
+  echo "! Error compiling"
+  exit 1
+fi
