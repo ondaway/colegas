@@ -5,3 +5,4 @@ person/person
 # The execution log files
 *.log
 
+personapp/target/
