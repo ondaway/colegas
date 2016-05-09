@@ -96,6 +96,10 @@ func personRPC(id string) (res string, err error) {
 		}
 	}
 
+	if res=="" {
+		os.Exit(1)
+	}
+
 	return
 }
 
@@ -116,8 +120,7 @@ func main() {
 	res, err := personRPC(id)
 	failOnError(err, "Failed to handle RPC request")
 
-	//log.Printf(" [.] Got %s", res)
-	fmt.Print(res)
+	fmt.Println(res)
 }
 
 func env() {
